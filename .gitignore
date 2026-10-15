@@ -1,0 +1,12 @@
+# Generati da XcodeGen / xcodebuild
+*.xcodeproj/
+SupportingFiles/Info.plist
+build/
+DerivedData/
+Payload/
+*.ipa
+Antigram-simulator.zip
+
+# macOS / Windows
+.DS_Store
+Thumbs.db

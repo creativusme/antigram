@@ -1,0 +1,52 @@
+# Specifica XcodeGen: il progetto Xcode viene generato su macOS (GitHub Actions),
+# così dal PC Windows non serve alcun file .xcodeproj.
+name: Antigram
+
+options:
+  bundleIdPrefix: com.creativusme
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  Antigram:
+    type: application
+    platform: iOS
+    scheme: {}
+    sources:
+      - path: Antigram
+    info:
+      path: SupportingFiles/Info.plist
+      properties:
+        CFBundleDisplayName: Antigram
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UIApplicationSupportsIndirectInputEvents: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIUserInterfaceStyle: Dark
+        NSCameraUsageDescription: "Antigram usa la fotocamera per scattare foto da pubblicare o mandare in DM."
+        NSMicrophoneUsageDescription: "Antigram usa il microfono per i messaggi vocali."
+        NSPhotoLibraryUsageDescription: "Antigram accede alle foto per pubblicarle o mandarle in DM."
+        NSPhotoLibraryAddUsageDescription: "Antigram salva nella libreria le foto che scarichi."
+        ITSAppUsesNonExemptEncryption: false
+    settings:
+      base:
+        # Mantieni sempre lo stesso bundle ID: iOS conserva login e statistiche solo se
+        # l'app reinstallata ha lo stesso identificativo di quella esistente.
+        PRODUCT_BUNDLE_IDENTIFIER: com.creativusme.antigram
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_PREVIEWS: YES
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
